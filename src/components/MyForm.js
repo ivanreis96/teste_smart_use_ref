@@ -1,22 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import FiltroSelectSearch from './FiltroSelectSearch';
 
 const MyForm = () => {
-    const textFieldRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  
+    const [formValues, setFormValues] = useState({
+      usinas: '',
+      fazendas: '',
+      blocos: '',
+      talhoes: ''
+    });
+
+    const handleChange = (field, value) => {
+      setFormValues({
+        ...formValues,
+        [field]: value
+      })
+    }
+
     const handleSubmit = () => {
-      textFieldRefs.forEach((ref, index) => {
-        if (ref.current) {
-          const inputValue = ref.current.getValue();
-          console.log(`Input ${index + 1}: ${inputValue}`);
-          // Faça algo com o valor do input
-        }
-      });
+      console.log('Input values: ', formValues);
     };
   
     return (
       <div>
-        <FiltroSelectSearch refs={textFieldRefs} />
+        <FiltroSelectSearch formValues={formValues} handleChange={handleChange} />
         <button onClick={handleSubmit}>Get Input Values</button>
       </div>
     );

@@ -1,24 +1,14 @@
-import React, { useState, forwardRef } from 'react';
+import React from 'react';
 
-const TextField = forwardRef((props, ref) => {
-    const [value, setValue] = useState('');
-  
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
-  
-    if (ref) {
-      ref.current = {
-        getValue: () => value,
-      };
-    }
+const TextField = React.forwardRef(({ value, onChange, placeholder }, ref) => {
   
     return (
       <input
         type="text"
         value={value}
-        onChange={handleChange}
-        placeholder={props.placeholder}
+        ref={ref}
+        onChange={onChange}
+        placeholder={placeholder}
       />
     );
 });
