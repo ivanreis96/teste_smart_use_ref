@@ -1,9 +1,10 @@
 import React from "react";
-import TextField from "./TextField";
+import TextField from "../TextField";
+import './style.css';
 
 const FiltroSelectSearch = ({ formValues, handleChange }) => {
-    return(
-        <div style={{ display: 'flex', gap:'2rem', marginBottom:'10px'}}>
+    return (
+        <div className="filtro-select-search">
             <div>
                 <label>USINAS</label><br />
                

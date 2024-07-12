@@ -1,0 +1,14 @@
+.filtro-select-search {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 10px;
+}
+
+.filtro-select-search div {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro-select-search label {
+    margin-bottom: 0.5rem;
+}
