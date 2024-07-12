@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FiltroSelectSearch from './FiltroSelectSearch';
 
 const MyForm = () => {
@@ -8,6 +8,12 @@ const MyForm = () => {
       blocos: '',
       talhoes: ''
     });
+
+    useEffect(() => {
+      if(formValues.usinas.length < 2){
+        console.log('Nome da usina tem que ter mais que 2 caracteres');
+      }
+    }, [formValues.usinas])
 
     const handleChange = (field, value) => {
       setFormValues({
