@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import FiltroSelectSearch from './FiltroSelectSearch';
 
 const MyForm = () => {
+
+    const [usinaInputError, setUsinaInputError] = useState('');
+
     const [formValues, setFormValues] = useState({
       usinas: '',
       fazendas: '',
@@ -11,9 +14,15 @@ const MyForm = () => {
 
     useEffect(() => {
       if(formValues.usinas.length < 2){
-        console.log('Nome da usina tem que ter mais que 2 caracteres');
+        setUsinaInputError('Nome da usina tem que ter mais que 2 caracteres');
+      }else{
+        setUsinaInputError('');
       }
     }, [formValues.usinas])
+    
+    useEffect(() => {
+      setUsinaInputError('');
+    }, [])
 
     const handleChange = (field, value) => {
       setFormValues({
@@ -27,10 +36,11 @@ const MyForm = () => {
     };
   
     return (
-      <div>
+      <form>
+        {usinaInputError && <p>{usinaInputError}</p>}
         <FiltroSelectSearch formValues={formValues} handleChange={handleChange} />
         <button onClick={handleSubmit}>Get Input Values</button>
-      </div>
+      </form>
     );
   };
   
